@@ -5,10 +5,12 @@ import { UsersModule } from './users/users.module';
 import * as process from 'process';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './entities/user.entity';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    JwtModule.register({ global: true, secret: process.env.JWT_SECRET_KEY}),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATASOURCE_HOST,
