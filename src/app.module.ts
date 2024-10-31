@@ -10,7 +10,6 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    JwtModule.register({ global: true, secret: process.env.JWT_SECRET_KEY}),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATASOURCE_HOST,
