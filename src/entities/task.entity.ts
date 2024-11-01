@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./user.entity";
 import { TaskStatus } from "src/enums/task-status.enum";
 
@@ -25,4 +25,11 @@ export class Task {
 
     @UpdateDateColumn({ type: 'timestamp' })
     updated_at: Date;
+
+    @ManyToOne(() => User, (user) => user.tasks)
+    @JoinColumn({ name: 'userId' })
+    user: User
+
+    @Column()
+    userId: number;
 }

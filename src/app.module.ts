@@ -5,8 +5,8 @@ import { UsersModule } from './users/users.module';
 import * as process from 'process';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './entities/user.entity';
-import { JwtModule } from '@nestjs/jwt';
 import { TasksModule } from './tasks/tasks.module';
+import { Task } from './entities/task.entity';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { TasksModule } from './tasks/tasks.module';
       username: process.env.DATASOURCE_USERNAME,
       password: process.env.DATASOURCE_PASSWORD,
       database: process.env.DATASOURCE_DATABASE,
-      entities: [ User ],
+      entities: [ User, Task ],
       synchronize: true,
       autoLoadEntities: true,
     }),
