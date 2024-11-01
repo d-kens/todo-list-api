@@ -14,6 +14,9 @@ export class User {
     @Column({ nullable: false })
     password: string;
 
+    @Column({ nullable: true })
+    refreshToken?: string;
+
     @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
 

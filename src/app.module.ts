@@ -6,6 +6,7 @@ import * as process from 'process';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { JwtModule } from '@nestjs/jwt';
       autoLoadEntities: true,
     }),
     AuthModule,
-    UsersModule
+    UsersModule,
+    TasksModule
   ],
 })
 export class AppModule {}

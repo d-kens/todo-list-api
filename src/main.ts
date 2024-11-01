@@ -2,12 +2,11 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import * as process from 'process';
+import * as cookieParser from 'cookie-parser';
 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  app.setGlobalPrefix('todo')
 
   app.useGlobalPipes(new ValidationPipe(
     {
@@ -15,6 +14,10 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }
   ));
+
+  app.use(cookieParser())
+
+
   await app.listen(process.env.PORT);
 }
 bootstrap().then(() => {
